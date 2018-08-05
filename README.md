@@ -1,7 +1,5 @@
 # UniDebugPanel
 
-[https://github.com/baba-s/uni-debug-panel:embed]
-
 「UniDebugPanel」を Unity プロジェクトに導入することで  
 ゲーム内にデバッグ用のカスタマイズ可能なボタンを表示できるようになります  
 
