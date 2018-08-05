@@ -2,7 +2,7 @@
 
 # UniDebugPanel
 
-You can display customizable buttons for debugging in the game.
+You can display customizable buttons for debugging in the game.  
 
 # Version
 
@@ -10,9 +10,9 @@ You can display customizable buttons for debugging in the game.
 
 # Install
 
-1. Go to the following page and download "UniDebugPanel.unitypackage".
-https://github.com/baba-s/uni-debug-panel/blob/master/UniDebugPanel.unitypackage?raw=true
-2. Import the downloaded "UniDebugPanel.unitypackage" into the Unity project.
+1. Go to the following page and download "UniDebugPanel.unitypackage".  
+https://github.com/baba-s/uni-debug-panel/blob/master/UniDebugPanel.unitypackage?raw=true  
+2. Import the downloaded "UniDebugPanel.unitypackage" into the Unity project.  
 
 # Usage
 
@@ -20,14 +20,14 @@ https://github.com/baba-s/uni-debug-panel/blob/master/UniDebugPanel.unitypackage
 
 <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805104628.png" />
 
-Select "Player Settings ..." from "File> Build Settings ..." on the Unity menu,
-Enter "ENABLE_DEBUG_PANEL" in "Scripting Define Symbols".
+Select "Player Settings ..." from "File> Build Settings ..." on the Unity menu,  
+Enter "ENABLE_DEBUG_PANEL" in "Scripting Define Symbols".  
 
 ## Basic Usage
 
 <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805104734.png" />
 
-Place the "UniDebugPanelUI" prefab in the scene.
+Place the "UniDebugPanelUI" prefab in the scene.  
 
 ```cs
 using KoganeLib.UniDebugPanel;
@@ -51,7 +51,7 @@ public class Example : MonoBehaviour
 }
 ```
 
-And you create a script like the one above.
+And you create a script like the one above.  
 
 <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805105108.gif" />
 
@@ -81,8 +81,8 @@ public static class Example
 }
 ```
 
-Furthermore, define a static function to which the RuntimeInitializeOnLoadMethod attribute is applied, 
-Make sure to generate a prefab of UniDebugPanelUI at the beginning of the game.
+Furthermore, define a static function to which the RuntimeInitializeOnLoadMethod attribute is applied,  
+Make sure to generate a prefab of UniDebugPanelUI at the beginning of the game.  
 
 ```cs
 using KoganeLib.UniDebugPanel;
@@ -109,13 +109,13 @@ And you create a script like the one above.
 
 <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805105836.gif" />
 
-With this, you can call the function for debugging at any time,
-The UniDebugPanelUI object will remain on even if switching scenes.
+With this, you can call the function for debugging at any time,  
+The UniDebugPanelUI object will remain on even if switching scenes.  
 
 ## Release Build
 
 <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805110417.png" />
 
-Select "Player Settings ..." from "File> Build Settings ..." on the Unity menu,
-Deleting "ENABLE_DEBUG_PANEL" from "Scripting Define Symbols"
-All functions of UniDebugPanelUI are disabled.
+Select "Player Settings ..." from "File> Build Settings ..." on the Unity menu,  
+Deleting "ENABLE_DEBUG_PANEL" from "Scripting Define Symbols"  
+All functions of UniDebugPanelUI are disabled.  
