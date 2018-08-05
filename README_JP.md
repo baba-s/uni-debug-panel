@@ -1,33 +1,32 @@
-[日本語の Readme はこちら](https://github.com/baba-s/uni-debug-panel/blob/master/README_JP.md)  
-
 # UniDebugPanel
 
-You can display customizable buttons for debugging in the game.
+「UniDebugPanel」を Unity プロジェクトに導入することで  
+ゲーム内にデバッグ用のカスタマイズ可能なボタンを表示できるようになります  
 
-# Version
+# 開発環境
 
 - Unity 2018.2.2f1
 
-# Install
+# 導入方法
 
-1. Go to the following page and download "UniDebugPanel.unitypackage".
+1. 下記のページにアクセスして「UniDebugPanel.unitypackage」をダウンロードします  
 https://github.com/baba-s/uni-debug-panel/blob/master/UniDebugPanel.unitypackage?raw=true
-2. Import the downloaded "UniDebugPanel.unitypackage" into the Unity project.
+2. ダウンロードした「UniDebugPanel.unitypackage」を Unity プロジェクトにインポートします  
 
-# Usage
+# 使い方
 
-## Symbol
+## 事前準備
 
 <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805104628.png" />
 
-Select "Player Settings ..." from "File> Build Settings ..." on the Unity menu,
-Enter "ENABLE_DEBUG_PANEL" in "Scripting Define Symbols".
+Unity メニューの「File>Build Settings...」から「Player Settings...」を選択し、  
+「Scripting Define Symbols」に「ENABLE_DEBUG_PANEL」と入力します  
 
-## Basic Usage
+## 基本的な使い方
 
 <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805104734.png" />
 
-Place the "UniDebugPanelUI" prefab in the scene.
+シーンに「UniDebugPanelUI」プレハブを配置します  
 
 ```cs
 using KoganeLib.UniDebugPanel;
@@ -51,17 +50,17 @@ public class Example : MonoBehaviour
 }
 ```
 
-And you create a script like the one above.
+そして、上記のようなスクリプトを作成します  
 
 <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805105108.gif" />
 
-You can now call the debugging functions from that scene.
+これで、そのシーンからデバッグ用の機能を呼び出せるようになります  
 
-## DontDestroyOnLoad
+## DontDestroyOnLoad による使い方
 
 <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805105623.png" />
 
-You will store the "UniDebugPanelUI" prefab in the "Resources" folder.
+「UniDebugPanelUI」プレハブを「Resources」フォルダに格納します  
 
 ```cs
 using KoganeLib.UniDebugPanel;
@@ -81,8 +80,8 @@ public static class Example
 }
 ```
 
-Furthermore, define a static function to which the RuntimeInitializeOnLoadMethod attribute is applied, 
-Make sure to generate a prefab of UniDebugPanelUI at the beginning of the game.
+さらに、RuntimeInitializeOnLoadMethod 属性が適用された static 関数を定義して  
+ゲーム開始時に UniDebugPanelUI のプレハブを生成するようにします  
 
 ```cs
 using KoganeLib.UniDebugPanel;
@@ -105,17 +104,21 @@ public class Example : MonoBehaviour
 }
 ```
 
-And you create a script like the one above.
+そして、上記のようなスクリプトを作成します  
 
 <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805105836.gif" />
 
-With this, you can call the function for debugging at any time,
-The UniDebugPanelUI object will remain on even if switching scenes.
+これで、いつでもデバッグ用の機能を呼び出せるようになり、  
+シーンを切り替えても UniDebugPanelUI オブジェクトが残り続けます  
 
-## Release Build
+## リリースビルド時に無効化する
 
 <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805110417.png" />
 
-Select "Player Settings ..." from "File> Build Settings ..." on the Unity menu,
-Deleting "ENABLE_DEBUG_PANEL" from "Scripting Define Symbols"
-All functions of UniDebugPanelUI are disabled.
+Unity メニューの「File>Build Settings...」から「Player Settings...」を選択し、  
+「Scripting Define Symbols」から「ENABLE_DEBUG_PANEL」を削除すると  
+UniDebugPanelUI の機能はすべて無効化されます  
+
+開発中は「ENABLE_DEBUG_PANEL」を定義しておき、  
+ゲームのリリース時に「ENABLE_DEBUG_PANEL」を削除することで  
+UniDebugPanelUI の機能をリリースビルドから除外できます  
