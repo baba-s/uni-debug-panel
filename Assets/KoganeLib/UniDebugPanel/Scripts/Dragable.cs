@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace KoganeLib.UniDebugPanel
+namespace KoganeLib.UniDebugPanel.Internal
 {
 	/// <summary>
 	/// UI をドラッグできるようにするコンポーネント

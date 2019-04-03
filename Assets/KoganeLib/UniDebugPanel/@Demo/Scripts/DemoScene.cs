@@ -4,10 +4,10 @@ using UnityEngine.UI;
 namespace KoganeLib.UniDebugPanel.Demo
 {
 	/// <summary>
-	/// タイトル画面を管理するクラス
+	/// デモを管理するクラス
 	/// </summary>
 	[DisallowMultipleComponent]
-	public sealed class TitleScene : MonoBehaviour
+	public sealed class DemoScene : MonoBehaviour
 	{
 		//====================================================================================
 		// 変数(SerializeField)
@@ -23,7 +23,7 @@ namespace KoganeLib.UniDebugPanel.Demo
 		/// </summary>
 		private void Start()
 		{
-			m_debugPanelUI.DoSetDisp
+			m_debugPanelUI.SetDisp
 			(
 				new UDPData( "ロック"		, () => m_startButtonUI.interactable = false	),
 				new UDPData( "アンロック"	, () => m_startButtonUI.interactable = true		)

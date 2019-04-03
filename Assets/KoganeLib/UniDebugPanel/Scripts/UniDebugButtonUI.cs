@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace KoganeLib.UniDebugPanel
+namespace KoganeLib.UniDebugPanel.Internal
 {
 	/// <summary>
 	/// デバッグボタンの UI を管理するクラス

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using KoganeLib.UniDebugPanel.Internal;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,11 +32,6 @@ namespace KoganeLib.UniDebugPanel
 		[SerializeField] private GameObject			m_root			= null;
 
 		//====================================================================================
-		// 変数(static)
-		//====================================================================================
-		private static UniDebugPanelUI m_instance;
-
-		//====================================================================================
 		// 変数
 		//====================================================================================
 
@@ -49,32 +45,10 @@ namespace KoganeLib.UniDebugPanel
 		{
 #if ENABLE_DEBUG_PANEL
 
-			if ( m_instance != null )
-			{
-				Destroy( gameObject );
-				return;
-			}
-
-			m_instance = this;
-
-			m_closeButtonUI.onClick.AddListener( () => DoSetState( false ) );
-			m_openButtonUI .onClick.AddListener( () => DoSetState( true  ) );
+			m_closeButtonUI.onClick.AddListener( () => SetState( false ) );
+			m_openButtonUI .onClick.AddListener( () => SetState( true  ) );
 #else
 			Destroy( gameObject );
-#endif
-		}
-
-		/// <summary>
-		/// 破棄される時に呼び出されます
-		/// </summary>
-		private void OnDestroy()
-		{
-#if ENABLE_DEBUG_PANEL
-
-			if ( m_instance == this )
-			{
-				m_instance = null;
-			}
 #endif
 		}
 
@@ -87,14 +61,14 @@ namespace KoganeLib.UniDebugPanel
 			m_openBaseUI	.SetActive( false );
 			m_closeBaseUI	.SetActive( true  );
 
-			DoSetState( false );
+			SetState( false );
 		}
 
 		/// <summary>
 		/// ステートを設定します
 		/// </summary>
 		[Conditional( ENABLE_SYMBOL_NAME )]
-		private void DoSetState( bool isOpen )
+		private void SetState( bool isOpen )
 		{
 			m_openBaseUI	.SetActive(  isOpen );
 			m_closeBaseUI	.SetActive( !isOpen );
@@ -104,7 +78,7 @@ namespace KoganeLib.UniDebugPanel
 		/// 表示するかどうかを設定します
 		/// </summary>
 		[Conditional( ENABLE_SYMBOL_NAME )]
-		public void DoSetVisible( bool isVisible )
+		public void SetVisible( bool isVisible )
 		{
 			var alpha = isVisible ? 1 : 0;
 			m_canvasGroup.alpha = alpha;
@@ -114,7 +88,7 @@ namespace KoganeLib.UniDebugPanel
 		/// 表示を設定します
 		/// </summary>
 		[Conditional( ENABLE_SYMBOL_NAME )]
-		public void DoSetDisp( params UDPData[] list )
+		public void SetDisp( params UDPData[] list )
 		{
 			foreach ( Transform n in m_layoutUI.transform )
 			{
@@ -132,36 +106,6 @@ namespace KoganeLib.UniDebugPanel
 			}
 
 			m_buttonUI.gameObject.SetActive( false );
-		}
-
-		//====================================================================================
-		// 関数(static)
-		//====================================================================================
-		/// <summary>
-		/// ステートを設定します
-		/// </summary>
-		[Conditional( ENABLE_SYMBOL_NAME )]
-		public static void SetState( bool isOpen )
-		{
-			m_instance.DoSetState( isOpen );
-		}
-
-		/// <summary>
-		/// 表示するかどうかを設定します
-		/// </summary>
-		[Conditional( ENABLE_SYMBOL_NAME )]
-		public static void SetVisible( bool isVisible )
-		{
-			m_instance.DoSetVisible( isVisible );
-		}
-
-		/// <summary>
-		/// 表示を設定します
-		/// </summary>
-		[Conditional( ENABLE_SYMBOL_NAME )]
-		public static void SetDisp( params UDPData[] list )
-		{
-			m_instance.DoSetDisp( list );
 		}
 	}
 }
