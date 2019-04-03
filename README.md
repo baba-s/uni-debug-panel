@@ -4,15 +4,15 @@
 
 You can display customizable buttons for debugging in the game.  
 
+[![](https://img.shields.io/github/release/baba-s/uni-debug-panel.svg?label=latest%20version)](https://github.com/baba-s/uni-debug-panel/releases)
+[![](https://img.shields.io/github/release-date/baba-s/uni-debug-panel.svg)](https://github.com/baba-s/uni-debug-panel/releases)
+![](https://img.shields.io/badge/Unity-2017.4%2B-red.svg)
+![](https://img.shields.io/badge/.NET-3.5%2B-orange.svg)
+[![](https://img.shields.io/github/license/baba-s/uni-debug-panel.svg)](https://github.com/baba-s/uni-debug-panel/blob/master/LICENSE)
+
 # Version
 
-- Unity 2018.2.2f1
-
-# Install
-
-1. Go to the following page and download "UniDebugPanel.unitypackage".  
-https://github.com/baba-s/uni-debug-panel/blob/master/UniDebugPanel.unitypackage?raw=true  
-2. Import the downloaded "UniDebugPanel.unitypackage" into the Unity project.  
+- Unity 2018.3.9f1
 
 # Usage
 
@@ -56,61 +56,6 @@ And you create a script like the one above.
 <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805105108.gif" />
 
 You can now call the debugging functions from that scene.
-
-## DontDestroyOnLoad
-
-<img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805105623.png" />
-
-You will store the "UniDebugPanelUI" prefab in the "Resources" folder.
-
-```cs
-using KoganeLib.UniDebugPanel;
-using UnityEngine;
-
-public static class Example
-{
-    [RuntimeInitializeOnLoadMethod( RuntimeInitializeLoadType.BeforeSceneLoad )]
-    private static void Init()
-    {
-        var name   = "UniDebugPanelUI";
-        var prefab = Resources.Load<UniDebugPanelUI>( name );
-        var obj    = GameObject.Instantiate( prefab );
-
-        GameObject.DontDestroyOnLoad( obj.gameObject );
-    }
-}
-```
-
-Furthermore, define a static function to which the RuntimeInitializeOnLoadMethod attribute is applied,  
-Make sure to generate a prefab of UniDebugPanelUI at the beginning of the game.  
-
-```cs
-using KoganeLib.UniDebugPanel;
-using UnityEngine;
-using UnityEngine.UI;
-
-public class Example : MonoBehaviour
-{
-    public Button m_buttonUI = null;
-
-    private void Start()
-    {
-        UniDebugPanelUI.SetDisp
-        (
-            new UDPData( "ロック"    , () => m_buttonUI.interactable = false ),
-            new UDPData( "アンロック", () => m_buttonUI.interactable = true  )
-        );
-        
-    }
-}
-```
-
-And you create a script like the one above.
-
-<img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805105836.gif" />
-
-With this, you can call the function for debugging at any time,  
-The UniDebugPanelUI object will remain on even if switching scenes.  
 
 ## Release Build
 

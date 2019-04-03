@@ -3,15 +3,15 @@
 「UniDebugPanel」を Unity プロジェクトに導入することで  
 ゲーム内にデバッグ用のカスタマイズ可能なボタンを表示できるようになります  
 
+[![](https://img.shields.io/github/release/baba-s/uni-debug-panel.svg?label=latest%20version)](https://github.com/baba-s/uni-debug-panel/releases)
+[![](https://img.shields.io/github/release-date/baba-s/uni-debug-panel.svg)](https://github.com/baba-s/uni-debug-panel/releases)
+![](https://img.shields.io/badge/Unity-2017.4%2B-red.svg)
+![](https://img.shields.io/badge/.NET-3.5%2B-orange.svg)
+[![](https://img.shields.io/github/license/baba-s/uni-debug-panel.svg)](https://github.com/baba-s/uni-debug-panel/blob/master/LICENSE)
+
 # 開発環境
 
-- Unity 2018.2.2f1
-
-# 導入方法
-
-1. 下記のページにアクセスして「UniDebugPanel.unitypackage」をダウンロードします  
-https://github.com/baba-s/uni-debug-panel/blob/master/UniDebugPanel.unitypackage?raw=true
-2. ダウンロードした「UniDebugPanel.unitypackage」を Unity プロジェクトにインポートします  
+- Unity 2018.3.9f1
 
 # 使い方
 
@@ -40,7 +40,7 @@ public class Example : MonoBehaviour
 
     private void Start()
     {
-        m_debugPanelUI.DoSetDisp
+        m_debugPanelUI.SetDisp
         (
             new UDPData( "ロック"    , () => m_buttonUI.interactable = false ),
             new UDPData( "アンロック", () => m_buttonUI.interactable = true  )
@@ -55,61 +55,6 @@ public class Example : MonoBehaviour
 <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805105108.gif" />
 
 これで、そのシーンからデバッグ用の機能を呼び出せるようになります  
-
-## DontDestroyOnLoad による使い方
-
-<img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805105623.png" />
-
-「UniDebugPanelUI」プレハブを「Resources」フォルダに格納します  
-
-```cs
-using KoganeLib.UniDebugPanel;
-using UnityEngine;
-
-public static class Example
-{
-    [RuntimeInitializeOnLoadMethod( RuntimeInitializeLoadType.BeforeSceneLoad )]
-    private static void Init()
-    {
-        var name   = "UniDebugPanelUI";
-        var prefab = Resources.Load<UniDebugPanelUI>( name );
-        var obj    = GameObject.Instantiate( prefab );
-
-        GameObject.DontDestroyOnLoad( obj.gameObject );
-    }
-}
-```
-
-さらに、RuntimeInitializeOnLoadMethod 属性が適用された static 関数を定義して  
-ゲーム開始時に UniDebugPanelUI のプレハブを生成するようにします  
-
-```cs
-using KoganeLib.UniDebugPanel;
-using UnityEngine;
-using UnityEngine.UI;
-
-public class Example : MonoBehaviour
-{
-    public Button m_buttonUI = null;
-
-    private void Start()
-    {
-        UniDebugPanelUI.SetDisp
-        (
-            new UDPData( "ロック"    , () => m_buttonUI.interactable = false ),
-            new UDPData( "アンロック", () => m_buttonUI.interactable = true  )
-        );
-        
-    }
-}
-```
-
-そして、上記のようなスクリプトを作成します  
-
-<img src="https://cdn-ak.f.st-hatena.com/images/fotolife/b/baba_s/20180805/20180805105836.gif" />
-
-これで、いつでもデバッグ用の機能を呼び出せるようになり、  
-シーンを切り替えても UniDebugPanelUI オブジェクトが残り続けます  
 
 ## リリースビルド時に無効化する
 
