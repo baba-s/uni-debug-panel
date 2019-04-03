@@ -5,8 +5,8 @@
 
 [![](https://img.shields.io/github/release/baba-s/uni-debug-panel.svg?label=latest%20version)](https://github.com/baba-s/uni-debug-panel/releases)
 [![](https://img.shields.io/github/release-date/baba-s/uni-debug-panel.svg)](https://github.com/baba-s/uni-debug-panel/releases)
-![](https://img.shields.io/badge/Unity-2017.4%2B-red.svg)
-![](https://img.shields.io/badge/.NET-3.5%2B-orange.svg)
+![](https://img.shields.io/badge/Unity-2018.3%2B-red.svg)
+![](https://img.shields.io/badge/.NET-4.x%2B-orange.svg)
 [![](https://img.shields.io/github/license/baba-s/uni-debug-panel.svg)](https://github.com/baba-s/uni-debug-panel/blob/master/LICENSE)
 
 # 開発環境
